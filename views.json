@@ -1,13 +1,62 @@
 [
   {
     "name": "week",
-    "title": "This week",
-    "subtitle": "Social Operations for Claude Code: what needs attention, rendered by npm run view",
+    "title": "The social week",
+    "subtitle": "Fictional demo until replaced with your records. Read-only snapshot.",
     "sections": [
       {
-        "title": "Needs attention",
-        "note": "TODO(author): point this at the industry's attention view (overdue, stuck, quiet).",
-        "sql": "select 'replace me' as item, 'TODO(author)' as why"
+        "title": "Attention",
+        "sql": "select code,title,owner,issue from attention order by code",
+        "note": "Latest snapshot per post; missing values remain unknown. Network definitions differ."
+      },
+      {
+        "title": "Approval Queue",
+        "sql": "select code,title,revision,decision,reviewed_revision,owner from approval_queue order by code",
+        "note": "Latest snapshot per post; missing values remain unknown. Network definitions differ."
+      },
+      {
+        "title": "Content Gaps",
+        "sql": "select f.name,f.network,count(p.id)::int as next_week_posts from profiles f left join posts p on f.id=p.profile_id and p.planned_at between now() and now()+interval '7 days' and p.state not in ('published','archived') group by f.id order by f.name",
+        "note": "Latest snapshot per post; missing values remain unknown. Network definitions differ."
+      }
+    ]
+  },
+  {
+    "name": "results",
+    "title": "Post and campaign results",
+    "subtitle": "Fictional demo until replaced with your records. Read-only snapshot.",
+    "sections": [
+      {
+        "title": "Performance",
+        "sql": "select code,title,network,as_of,impressions,engagements,clicks,engagement_pct from post_performance where state='published' order by code",
+        "note": "Latest snapshot per post; missing values remain unknown. Network definitions differ."
+      },
+      {
+        "title": "Campaign Review",
+        "sql": "select campaign,count(*)::int as posts,sum(clicks) as known_clicks,count(*) filter(where clicks is null)::int as missing_clicks from post_performance where state='published' group by campaign order by campaign",
+        "note": "Latest snapshot per post; missing values remain unknown. Network definitions differ."
+      },
+      {
+        "title": "Metric Gaps",
+        "sql": "select code,title,as_of,clicks from post_performance where state='published' and (as_of<current_date-7 or as_of is null or clicks is null) order by code",
+        "note": "Latest snapshot per post; missing values remain unknown. Network definitions differ."
+      }
+    ]
+  },
+  {
+    "name": "review",
+    "title": "Owner and evidence review",
+    "subtitle": "Fictional demo until replaced with your records. Read-only snapshot.",
+    "sections": [
+      {
+        "title": "Owner Load",
+        "sql": "select owner,count(*)::int as pending from posts where state in ('draft','review','approved') group by owner order by owner",
+        "note": "Latest snapshot per post; missing values remain unknown. Network definitions differ."
+      },
+      {
+        "title": "Compliance",
+        "sql": "select code,jurisdiction,rule,issue from compliance_findings order by code,rule",
+        "note": "Latest snapshot per post; missing values remain unknown. Network definitions differ."
       }
     ]
   }
