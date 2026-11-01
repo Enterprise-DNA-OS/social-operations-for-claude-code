@@ -24,7 +24,7 @@ npm run docs
 
 Open the folder with Claude Code, Codex, OpenCode or Cursor. Start with /weekly-review. Every runtime follows CLAUDE.md through AGENTS.md and the same command recipes. PGlite stores local data. DATABASE_URL selects PostgreSQL with a trusted operator account. Never seed a shared database. DATA_DIR changes the local storage location; OUTPUT_DIR changes report output.
 
-The fictional Kauri Outdoors demo has an overdue launch with missing advertising evidence, a stale unassigned draft, an approved care post, two published posts and a stale performance snapshot with unknown clicks. Dates are relative to today. Seeding twice preserves existing records on the same day.
+The fictional Kauri Outdoors demo has an overdue launch with missing advertising evidence, a stale unassigned draft, an approved care post, two published posts and a stale performance snapshot with unknown clicks. Dates are relative to today. Seeding again preserves existing records.
 
 ## What the team does every week
 

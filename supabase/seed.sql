@@ -13,7 +13,7 @@ insert into posts(id,code,profile_id,campaign_id,title,body,owner,planned_at,pub
  ('30000000-0000-0000-0000-000000000005','SOC-005','10000000-0000-0000-0000-000000000001','20000000-0000-0000-0000-000000000001','Trail pack care','Ad: wash with warm water.','Mia',now()+interval '3 days',null,'','approved',true,'Demo reviewer confirmed clear Ad label','Demo care-sheet version 2',current_date+90,now()) on conflict do nothing;
 insert into approvals(id,post_id,revision,decision,actor,evidence) values
  ('40000000-0000-0000-0000-000000000001','30000000-0000-0000-0000-000000000005',1,'approved','Demo approver','Demo signed care-sheet review') on conflict do nothing;
-insert into metrics(post_id,as_of,impressions,engagements,clicks,source) values
- ('30000000-0000-0000-0000-000000000002',current_date-9,1000,50,15,'fictional demo'),
- ('30000000-0000-0000-0000-000000000002',current_date-1,1600,96,32,'fictional demo'),
- ('30000000-0000-0000-0000-000000000004',current_date-10,900,18,null,'fictional demo') on conflict do nothing;
+insert into metrics(id,post_id,as_of,impressions,engagements,clicks,source) values
+ ('50000000-0000-0000-0000-000000000001','30000000-0000-0000-0000-000000000002',current_date-9,1000,50,15,'fictional demo'),
+ ('50000000-0000-0000-0000-000000000002','30000000-0000-0000-0000-000000000002',current_date-1,1600,96,32,'fictional demo'),
+ ('50000000-0000-0000-0000-000000000003','30000000-0000-0000-0000-000000000004',current_date-10,900,18,null,'fictional demo') on conflict do nothing;

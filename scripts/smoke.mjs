@@ -21,7 +21,9 @@ const child=(script,args=[])=>{const out=spawnSync(process.execPath,[script,...a
 try{
  if(db.mode==='postgres'){const exists=await db.query("select tablename from pg_tables where schemaname='public'");assert.equal(exists.length,0,'TEST_DATABASE_URL must be an empty disposable database');}
  assert.equal((await migrate(db)).ran.length,1);assert.equal((await migrate(db)).ran.length,0);
- await seed(db);await seed(db);assert.equal((await call('list')).length,5);
+ await seed(db);await seed(db);assert.equal((await call('list')).length,5);assert.equal((await db.query('select id from metrics')).length,3);
+ // Stable seed IDs prevent a second run on a later date from inventing new snapshots.
+ await db.exec("update metrics set as_of=as_of-1");await seed(db);assert.equal((await db.query('select id from metrics')).length,3);await db.exec("update metrics set as_of=as_of+1");
  for(const c of Object.keys(reads))assert.ok(Array.isArray(await call(c)),c);
  assert.equal((await call('help')).commands.length,commands.length);
  assert.ok((await call('attention')).some(x=>x.issue==='overdue plan'));
