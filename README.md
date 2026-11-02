@@ -6,7 +6,7 @@ Plan the content week, record exactly what a person approved and review post res
 |---|---|---|
 | Free, MIT. Install the demo and use your own records. | Your fields, approval rules, Sprout exports and review documents. | Installed, connected and operated through Omni by Enterprise DNA. Setup fee, then a retainer. |
 
-[Get your version built](https://enterprisedna.co/omni/book/?offer=replace-software&utm_source=github&utm_medium=readme&utm_campaign=sprout-social) · [Instead of Sprout Social](https://enterprisedna.co/omni/instead-of/sprout-social)
+[Get your version built](https://enterprisedna.co/omni/book/?offer=replace-software&utm_source=github&utm_medium=readme&utm_campaign=sprout-social) · [Instead of Sprout Social](https://enterprisedna.co/omni/instead-of/sprout-social?utm_source=github&utm_medium=readme&utm_campaign=sprout-social)
 
 ## Quick start
 
